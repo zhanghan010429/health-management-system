@@ -10,7 +10,7 @@ const db = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
     password: '123456',
-    database: 'health_mange'
+    database: 'health_manage'
 })
 db.connect()
 

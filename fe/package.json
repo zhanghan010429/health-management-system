@@ -1,5 +1,5 @@
 {
-  "name": "health_mange",
+  "name": "health_manage",
   "version": "3.0.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,8 @@
   },
   "author": "zhanghan",
   "dependencies": {
-    "core-js": "^3.6.5"
+    "core-js": "^3.6.5",
+    "echarts": "^5.4.2"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-umd": "^7.2.0",

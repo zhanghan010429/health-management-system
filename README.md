@@ -18,7 +18,7 @@
 
 ### About database
 
- - Install the MySQL database, Create a new database health_mange, and import all the data（/server/health_app.sql）
+ - Install the MySQL database, Create a new database health_manage, and import all the data（/server/health_app.sql）
  - The default passwords of users in the basic_info table are 111111
  
 ### Target function

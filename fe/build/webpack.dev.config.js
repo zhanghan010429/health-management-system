@@ -4,7 +4,7 @@ module.exports = config => {
         proxy: {
             '/health/static': {
                 sw: false,
-                target: '',
+                target: 'http://localhost:8080',
                 pathRewrite: { '^/health/static': '/static' },
                 changeOrigin: false
             }
