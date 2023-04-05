@@ -3,17 +3,17 @@
         <form class="account-container-form" v-on:submit="submitLogin">
             <p>
                 <span class="phone-ico"></span>
-                <input type="tel" placeholder="请输入手机号" maxlength="11" class="phone" v-model.lazy.trim="state.phone" v-focus
+                <input type="tel" placeholder="Please enter your mobile phone number." maxlength="11" class="phone" v-model.lazy.trim="state.phone" v-focus
                     v-blur />
             </p>
             <p>
                 <span class="pwd-ico"></span>
-                <input type="password" placeholder="请输入密码" class="pwd" v-model.lazy.trim="state.pwd" />
+                <input type="password" placeholder="Please enter your password." class="pwd" v-model.lazy.trim="state.pwd" />
             </p>
             <p>
-                <input type="submit" value="登	录" class="account-btn" />
+                <input type="submit" value="login" class="account-btn" />
             </p>
-            <router-link tag="a" class="phone-prompt" :to="{ name: 'GetPhoneCode' }" replace>忘记密码</router-link>
+            <router-link tag="a" class="phone-prompt" :to="{ name: 'GetPhoneCode' }" replace>Forget Password</router-link>
         </form>
     </div>
 </template>
@@ -43,7 +43,7 @@ export default defineComponent({
         function submitLogin() {
             if (!validatePhone(state.phone)) {
                 return Dialog.alert({
-                    message: '手机号码格式不正确，请重新输入！'
+                    message: 'The format of the mobile phone number is incorrect. Please enter it again!'
                 })
             }
 
@@ -64,7 +64,7 @@ export default defineComponent({
                     }
                 })
                 .catch(error => {
-                    Dialog.alert({ message: '登录失败' })
+                    Dialog.alert({ message: 'Login Failure' })
                 })
         }
 

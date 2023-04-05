@@ -3,23 +3,23 @@
         <explain :explainName="state.explainName"></explain>
 
         <div class="find-pwd-process">
-            <img src="./images/flow1.png" width="100%" height="100%" alt="找回密码第一步" />
+            <img src="./images/flow1.png" width="100%" height="100%" alt="The first step of retrieving the password." />
         </div>
         <div class="account-container">
             <form class="account-container-form" v-on:submit.prevent="next">
                 <p>
                     <span class="phone-ico"></span>
-                    <input type="tel" placeholder="请输入手机号" maxlength="11" class="phone" v-model="state.phone" v-focus
+                    <input type="tel" placeholder="Please enter your mobile phone number." maxlength="11" class="phone" v-model="state.phone" v-focus
                         v-blur />
                 </p>
                 <p>
                     <span class="code-ico"></span>
-                    <input type="text" placeholder="请输入验证码" maxlength="6" class="code" v-model="state.code" v-focus
+                    <input type="text" placeholder="Please enter the verification code." maxlength="6" class="code" v-model="state.code" v-focus
                         v-blur />
                     <count-down :phone="state.phone"></count-down>
                 </p>
                 <p>
-                    <input type="submit" value="下一步" class="account-btn" />
+                    <input type="submit" value="Next Step" class="account-btn" />
                 </p>
             </form>
         </div>
@@ -51,7 +51,7 @@ export default defineComponent({
         const router = useRouter()
 
         const state = reactive({
-            explainName: '找回密码第一步',
+            explainName: 'The first step of retrieving the password.',
             phone: '',
             code: ''
         })
@@ -59,7 +59,7 @@ export default defineComponent({
         function next() {
             if (!validatePhone(state.phone)) {
                 return Dialog.alert({
-                    message: '手机号格式不正确，请重新输入！'
+                    message: 'The format of mobile phone number is incorrect.Please enter it again!'
                 })
             }
 

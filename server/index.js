@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/health/auth', require(__dirname + '/module/auth'))
 app.use('/health/user', require(__dirname + '/module/user'))
+app.use('/health/breathe', require(__dirname + '/module/breathe'))
 app.use('/health/exercise', require(__dirname + '/module/exercise'))
 app.use('/health/heart', require(__dirname + '/module/heart'))
 app.use('/health/nutrition', require(__dirname + '/module/nutrition'))

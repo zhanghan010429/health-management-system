@@ -6,11 +6,11 @@
         <div class="account-check">
             <router-link tag="div" :to="{ name: 'Login' }" replace active-class="this-account-model"
                 class="account-check-btn">
-                <span>登录</span>
+                <span>Login</span>
             </router-link>
             <router-link tag="div" :to="{ name: 'Regist' }" replace active-class="this-account-model"
                 class="account-check-btn">
-                <span>注册</span>
+                <span>Register</span>
             </router-link>
         </div>
 
@@ -38,7 +38,7 @@ export default defineComponent({
 
         return {
             isAccount: true,
-            explainName: '欢迎来到健康管理系统'
+            explainName: 'Welcome to the Health Management System'
         }
     }
 })

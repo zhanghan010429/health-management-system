@@ -1,17 +1,29 @@
 <template>
-    <!-- 顶部固定定位组件 -->
+    <!-- fixed header -->
     <div class="fixed-header">
         <div class="explain">
-            <a href="javascript:;" v-show="!isAccount" @click="back()"> </a>{{ explainName }}
+            <div>
+                <a href="javascript:;" v-show="!isAccount" @click="back()"></a>{{ explainName }}
+            </div>
         </div>
+        <!-- <van-button 
+            type="primary"
+            class="add-btn"
+            @click="addData"
+        >添加数据</van-button> -->
     </div>
 </template>
 
 <script lang="ts" scoped>
 import { defineComponent } from 'vue'
+import { Button } from 'vant'
 import { useRouter, useRoute } from 'vue-router'
 
 export default defineComponent({
+    components: {
+        [Button.name]: Button
+    },
+    emits: ['addSomeData'],
     props: {
         explainName: {
             type: String,
@@ -31,6 +43,11 @@ export default defineComponent({
         }
         return {
             back
+        }
+    },
+    methods: {
+        addData() {
+            this.$emit('addSomeData')
         }
     }
 })
@@ -64,6 +81,13 @@ export default defineComponent({
             background: url('./goback.png') no-repeat left center;
             background-size: 12px 18px;
         }
+
+    }
+    .add-btn {
+        float: right;
+        margin-right: 10px;
+        height: 45px;
+        text-align: right;
     }
 }
 </style>

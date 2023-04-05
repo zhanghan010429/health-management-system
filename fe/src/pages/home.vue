@@ -88,7 +88,7 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .title-wrap {
-    margin: 8px;
+    margin: 60px 8px 8px 8px;
     border-radius: 8px;
     overflow: hidden;
 }
