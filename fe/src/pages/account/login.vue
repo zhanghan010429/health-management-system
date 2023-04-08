@@ -1,6 +1,6 @@
 <template>
     <div class="account-container">
-        <form class="account-container-form" v-on:submit="submitLogin">
+        <div class="account-container-form">
             <p>
                 <span class="phone-ico"></span>
                 <input type="tel" placeholder="Please enter your mobile phone number." maxlength="11" class="phone" v-model.lazy.trim="state.phone" v-focus
@@ -11,10 +11,15 @@
                 <input type="password" placeholder="Please enter your password." class="pwd" v-model.lazy.trim="state.pwd" />
             </p>
             <p>
-                <input type="submit" value="login" class="account-btn" />
+                <input 
+                    type="submit" 
+                    value="login" 
+                    class="account-btn" 
+                    @click="submitLogin"
+                />
             </p>
             <router-link tag="a" class="phone-prompt" :to="{ name: 'GetPhoneCode' }" replace>Forget Password</router-link>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -49,7 +54,7 @@ export default defineComponent({
 
             if (!validatePassword(state.pwd)) {
                 return Dialog.alert({
-                    message: '密码需要至少6位数，请重新输入！'
+                    message: 'Password needs at least 6 digits. Please enter it again!'
                 })
             }
 

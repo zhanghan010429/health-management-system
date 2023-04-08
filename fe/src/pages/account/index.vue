@@ -1,7 +1,7 @@
 <template>
     <div class="account-warper">
         <explain :explainName="explainName" :isAccount="isAccount"></explain>
-        <img src="https://search-operate.cdn.bcebos.com/b8293d29b7c194330ef6dae455e272da.jpeg" alt="" class="title-img" />
+        <img src="./images/9a4181fab8424d79c671299bb42738ec.jpeg" alt="" class="title-img" />
 
         <div class="account-check">
             <router-link tag="div" :to="{ name: 'Login' }" replace active-class="this-account-model"

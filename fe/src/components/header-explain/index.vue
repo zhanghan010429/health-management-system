@@ -10,7 +10,7 @@
             type="primary"
             class="add-btn"
             @click="addData"
-        >添加数据</van-button> -->
+        >add data</van-button> -->
     </div>
 </template>
 

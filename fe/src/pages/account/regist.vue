@@ -1,34 +1,39 @@
 <template>
     <div class="account-container">
-        <form v-on:submit="submitRegist" class="account-container-form">
+        <div class="account-container-form">
             <p>
                 <span class="phone-ico"></span>
-                <input type="tel" placeholder="请输入手机号" maxlength="11" class="phone" v-model="state.phone" v-focus v-blur />
+                <input type="tel" placeholder="Please input your phone number." maxlength="11" class="phone" v-model="state.phone" v-focus v-blur />
             </p>
             <p>
-                <input type="text" placeholder="请输入姓名" class="phone" v-model="state.name" v-focus v-blur />
+                <input type="text" placeholder="Please input your name." class="phone" v-model="state.name" v-focus v-blur />
             </p>
             <p>
-                <input type="text" placeholder="请输入年龄" class="phone" v-model="state.age" v-focus v-blur />
+                <input type="text" placeholder="Please input your age." class="phone" v-model="state.age" v-focus v-blur />
             </p>
             <p>
-                <van-field v-model="fieldValue" is-link readonly label="性别" placeholder="选择性别" @click="showPicker = true" />
+                <van-field v-model="fieldValue" is-link readonly label="Gender" placeholder="Please select your gender." @click="showPicker = true" />
                 <van-popup v-model:show="showPicker" round position="bottom">
                     <van-picker :columns="columns" @cancel="showPicker = false" @confirm="onConfirm" />
                 </van-popup>
             </p>
             <p>
                 <span class="pwd-ico"></span>
-                <input type="password" placeholder="请输入至少6位数的密码" class="pwd" v-model="state.pwd" v-focus v-blur />
+                <input type="password" placeholder="Please enter a password of at least 6 digits." class="pwd" v-model="state.pwd" v-focus v-blur />
             </p>
             <p>
                 <span class="pwd-ico"></span>
-                <input type="password" placeholder="确认密码" class="pwd" v-model="state.confirmPwd" v-focus v-blur />
+                <input type="password" placeholder="Confirm your password." class="pwd" v-model="state.confirmPwd" v-focus v-blur />
             </p>
             <p>
-                <input type="submit" value="注	册" class="account-btn" />
+                <input 
+                    type="submit" 
+                    value="Register" 
+                    class="account-btn" 
+                    @click="submitRegist"
+                />
             </p>
-        </form>
+        </div>
     </div>
 </template>
 
@@ -63,8 +68,8 @@ export default defineComponent({
             confirmPwd: ''
         })
         const columns = [
-            { text: '男', value: '0' },
-            { text: '女', value: '1' }
+            { text: 'male', value: '0' },
+            { text: 'female', value: '1' }
         ];
         let showPicker = ref(false);
         const fieldValue = ref('');
@@ -98,10 +103,12 @@ export default defineComponent({
                 .then(res => {
                     const { code, message } = res.data
                     if (code === 0) {
-                        router.replace({
-                            path: '/account/login'
-                        })
-                        Dialog.alert({ message: '注册成功' })
+                        Dialog.alert({ message: '注册成功，快去登陆吧～' })
+                        setTimeout(() => {
+                            router.replace({
+                                path: '/account/login'
+                            })
+                        }, 1000);
                     } else {
                         Dialog.alert({ message })
                     }

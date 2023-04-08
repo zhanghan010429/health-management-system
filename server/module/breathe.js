@@ -10,33 +10,28 @@ const db = require('../helper/db')
 const crypto = require('crypto')
 
 /**
- * 登录
+ * 获取呼吸频率数据
  */
-router.post('/loginForm', async (req, res) => {
-    const md5 = crypto.createHash('md5')
-    const loginMsg = req.body
-    const phone = loginMsg.phone
-    const pwd = md5.update(loginMsg.pwd).digest('hex')
+router.post('/getBreatheData', async (req, res) => {
+    const msg = req.body
+    const { id } = msg;
 
     try {
         const result = await db(
-            'select id from basic_info where phone="' +
-            phone +
-            '" and pwd="' +
-            pwd +
-            '"'
+            `select Mon, Tue, Wed, Thur, Fri, Sat, Sun from respiratory_rate where id="${id}"`
         )
-        const [item] = result
-        if (!item)
-            res.json({ code: -1, data: null, message: '用户不存在或密码错误' })
-        else res.json({ code: 0, data: item.id, message: '' })
+        if (result.length >= 1) {
+            res.json({ code: 0, data: result[0], message: '成功' })
+        } else {
+            
+        }
     } catch (err) {
-        res.json({ code: -1, data: null, message: '登录失败，请重新操作' })
+        res.json({ code: -1, data: null, message: err })
     }
 })
 
 /**
- * 添加呼吸频率数据
+ * 添加或者修改呼吸频率数据
  */
 router.post('/setBreatheData', async (req, res) => {
     const msg = req.body
@@ -46,40 +41,42 @@ router.post('/setBreatheData', async (req, res) => {
         const result = await db(
             'select id from respiratory_rate where id="' + id + '"'
         )
-        if (result.length > 1) {
-            res.json({ code: -1, data: null, message: '该账号已有数据' })
+        console.log(result, 'result')
+        if (result.length >= 1) {
+            const update = await db(
+                `update respiratory_rate set Mon="${Mon}", Tue="${Tue}", Wed="${Wed}", Thur="${Thur}", Fri="${Fri}", Sat="${Sat}", Sun="${Sun}" where id=${id}`
+            )
+            if (update) {
+                res.json({ code: 1, data: null, message: '修改成功' })
+            }
         } else {
             const inserted = db(
                 `insert into respiratory_rate set id=${id}, Mon="${Mon}", Tue="${Tue}", Wed="${Wed}", Thur="${Thur}", Fri="${Fri}", Sat="${Sat}", Sun="${Sun}"`
             )
-            if (inserted) res.json({ code: 0, data: null, message: '注册成功' })
-            else res.json({ code: -1, data: null, message: '注册失败' })
+            if (inserted) res.json({ code: 0, data: null, message: '添加成功' })
+            else res.json({ code: -1, data: null, message: '添加失败' })
         }
     } catch (err) {
         res.json({ code: -1, data: null, message: err })
     }
 })
 
+
 /**
- * 获取短信验证码
+ * 获取血氧数据
  */
-router.post('/getPhoneCode', async (req, res) => {
+router.post('/getBloodOxygenData', async (req, res) => {
     const msg = req.body
-    const phone = msg.phone
+    const { id } = msg;
 
     try {
-        const [data] = await db(
-            'select id from basic_info where phone="' + phone + '"'
+        const result = await db(
+            `select Mon, Tue, Wed, Thur, Fri, Sat, Sun from blood_oxygen where id="${id}"`
         )
-        if (!data) {
-            res.json({ code: -1, data: null, message: '手机号码不存在' })
+        if (result.length >= 1) {
+            res.json({ code: 0, data: result[0], message: '成功' })
         } else {
-            // ...模拟一系列获取短信验证码接口的代码
-            let code = ''
-            for (let i = 0; i < 6; i += 1) {
-                code += Math.floor(Math.random() * 10)
-            }
-            res.json({ code: 0, data: code, message: '' })
+            
         }
     } catch (err) {
         res.json({ code: -1, data: null, message: err })
@@ -87,24 +84,86 @@ router.post('/getPhoneCode', async (req, res) => {
 })
 
 /**
- * 重置密码
+ * 添加或者修改血氧数据
  */
-router.post('/resetPassword', async (req, res) => {
-    const md5 = crypto.createHash('md5')
-    const { phone, pwd } = req.body
-    const _pwd = md5.update(pwd).digest('hex')
+router.post('/setBloodOxygenData', async (req, res) => {
+    const msg = req.body
+    const { id, Mon, Tue, Wed, Thur, Fri, Sat, Sun } = msg;
 
     try {
-        await db(
-            'update basic_info set pwd="' +
-            _pwd +
-            '" where phone="' +
-            phone +
-            '"'
+        const result = await db(
+            'select id from blood_oxygen where id="' + id + '"'
         )
-        res.json({ code: 0, data: null, message: '密码重置成功' })
-    } catch (e) {
-        res.json({ code: -1, data: null, message: e })
+        console.log(result, 'result')
+        if (result.length >= 1) {
+            const update = await db(
+                `update blood_oxygen set Mon="${Mon}", Tue="${Tue}", Wed="${Wed}", Thur="${Thur}", Fri="${Fri}", Sat="${Sat}", Sun="${Sun}" where id=${id}`
+            )
+            if (update) {
+                res.json({ code: 1, data: null, message: '修改成功' })
+            }
+        } else {
+            const inserted = db(
+                `insert into blood_oxygen set id=${id}, Mon="${Mon}", Tue="${Tue}", Wed="${Wed}", Thur="${Thur}", Fri="${Fri}", Sat="${Sat}", Sun="${Sun}"`
+            )
+            if (inserted) res.json({ code: 0, data: null, message: '添加成功' })
+            else res.json({ code: -1, data: null, message: '添加失败' })
+        }
+    } catch (err) {
+        res.json({ code: -1, data: null, message: err })
+    }
+})
+
+
+/**
+ * 获取肺活量数据
+ */
+router.post('/getVitalApacityData', async (req, res) => {
+    const msg = req.body
+    const { id } = msg;
+
+    try {
+        const result = await db(
+            `select Mon, Tue, Wed, Thur, Fri, Sat, Sun from vital_apacity where id="${id}"`
+        )
+        if (result.length >= 1) {
+            res.json({ code: 0, data: result[0], message: '成功' })
+        } else {
+            
+        }
+    } catch (err) {
+        res.json({ code: -1, data: null, message: err })
+    }
+})
+
+/**
+ * 添加或者修改肺活量数据
+ */
+router.post('/setVitalApacityData', async (req, res) => {
+    const msg = req.body
+    const { id, Mon, Tue, Wed, Thur, Fri, Sat, Sun } = msg;
+
+    try {
+        const result = await db(
+            'select id from vital_apacity where id="' + id + '"'
+        )
+        console.log(result, 'result')
+        if (result.length >= 1) {
+            const update = await db(
+                `update vital_apacity set Mon="${Mon}", Tue="${Tue}", Wed="${Wed}", Thur="${Thur}", Fri="${Fri}", Sat="${Sat}", Sun="${Sun}" where id=${id}`
+            )
+            if (update) {
+                res.json({ code: 1, data: null, message: '修改成功' })
+            }
+        } else {
+            const inserted = db(
+                `insert into vital_apacity set id=${id}, Mon="${Mon}", Tue="${Tue}", Wed="${Wed}", Thur="${Thur}", Fri="${Fri}", Sat="${Sat}", Sun="${Sun}"`
+            )
+            if (inserted) res.json({ code: 0, data: null, message: '添加成功' })
+            else res.json({ code: -1, data: null, message: '添加失败' })
+        }
+    } catch (err) {
+        res.json({ code: -1, data: null, message: err })
     }
 })
 
