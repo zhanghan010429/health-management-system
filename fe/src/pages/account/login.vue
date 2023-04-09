@@ -63,7 +63,11 @@ export default defineComponent({
                     const { code, data, message } = res.data
                     if (code === 0) {
                         window.sessionStorage.uid = data
-                        router.back()
+                        setTimeout(() => {
+                            router.replace({
+                                path: '/home'
+                            })
+                        }, 1000);
                     } else {
                         Dialog.alert({ message })
                     }

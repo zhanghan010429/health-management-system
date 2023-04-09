@@ -122,7 +122,7 @@ export default defineComponent({
                         xAxis: {
                             type: 'category',
                             boundaryGap: false,
-                            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+                            data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dece']
                         },
                         yAxis: {
                             type: 'value'
@@ -174,9 +174,6 @@ export default defineComponent({
                             top: '100px',
                             show: true,
                             feature: {
-                            dataZoom: {
-                                yAxisIndex: 'none'
-                            },
                             dataView: { readOnly: false },
                             magicType: { type: ['line', 'bar'] },
                             restore: {},

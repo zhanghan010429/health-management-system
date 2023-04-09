@@ -8,8 +8,8 @@
 
 - git clone
 - Front-end code is in fe directory, server-end node code is in server directory, you can open the corresponding directory, then view package.json, run 'npm' to execute the corresponding script.
-- Fe directory: run 'npm i', then run 'npm run dev'
-- Server directory：run 'npm i', then run'npm run start'
+- cd fe then run 'npm i', then run 'npm run dev'
+- cd server then run 'npm i', then run'npm run start'
 
 ### Online deployment
 
