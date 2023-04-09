@@ -98,6 +98,7 @@ export default defineComponent({
                                 }
                             }
                         },
+                        
                         toolbox: {
                             feature: {
                                 dataView: { show: true, readOnly: false },
@@ -115,7 +116,10 @@ export default defineComponent({
                                 data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
                                 axisPointer: {
                                     type: 'shadow'
-                                }
+                                },
+                                axisLabel: {
+                                    rotate: 45
+                                },
                             }
                         ],
                         yAxis: [
@@ -123,14 +127,16 @@ export default defineComponent({
                                 type: 'value',
                                 name: '步数',
                                 axisLabel: {
-                                    formatter: '{value} 步'
+                                    formatter: '{value} 步',
+                                    rotate: -90
                                 }
                             },
                             {
                                 type: 'value',
                                 name: '卡路里',
                                 axisLabel: {
-                                    formatter: '{value} cal'
+                                    formatter: '{value} cal',
+                                    rotate: -90
                                 }
                             }
                         ],

@@ -13,7 +13,7 @@
                         headpic: encodeURIComponent(state.headpic)
                     }
                 }">
-                    <img :src="state.headpic" width="119" height="119" alt="头像" />
+                    <!-- <img :src="state.headpic" width="119" height="119" alt="头像" /> -->
                 </router-link>
             </div>
         </div>

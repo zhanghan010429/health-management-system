@@ -6,7 +6,7 @@
         <!-- 个人信息 -->
         <div class="personal-msg-wraper">
             <div class="head">
-                <img :src="state.userInfo.headpic" width="80" height="80" alt="头像" />
+                <!-- <img :src="state.userInfo.headpic" width="80" height="80" alt="头像" /> -->
             </div>
             <div class="phone">
                 <img src="./images/phone.png" width="30" height="30" class="phone-ico" alt="手机" />
