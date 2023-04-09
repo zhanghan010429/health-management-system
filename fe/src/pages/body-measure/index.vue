@@ -121,7 +121,6 @@ export default defineComponent({
                         },
                         xAxis: {
                             type: 'category',
-                            boundaryGap: false,
                             data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dece']
                         },
                         yAxis: {
@@ -131,25 +130,21 @@ export default defineComponent({
                             {
                                 name: 'height',
                                 type: 'line',
-                                stack: 'Total',
                                 data: []
                             },
                             {
                                 name: 'weight',
                                 type: 'line',
-                                stack: 'Total',
                                 data: []
                             },
                             {
                                 name: 'bmi',
                                 type: 'line',
-                                stack: 'Total',
                                 data: []
                             },
                             {
                                 name: 'body_fat_rate',
                                 type: 'line',
-                                stack: 'Total',
                                 data: []
                             }
                         ]

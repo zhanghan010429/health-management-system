@@ -132,19 +132,16 @@ export default defineComponent({
                             {
                                 name: 'heart_rate',
                                 type: 'line',
-                                stack: 'Total',
                                 data: []
                             },
                             {
                                 name: 'aerobic_fitness',
                                 type: 'line',
-                                stack: 'Total',
                                 data: []
                             },
                             {
                                 name: 'sleep_duration',
                                 type: 'line',
-                                stack: 'Total',
                                 data: []
                             }
                         ]
@@ -193,13 +190,11 @@ export default defineComponent({
                         {
                             name: 'systolic_blood_pressure',
                             type: 'line',
-                            stack: 'Total',
                             data: []
                         },
                         {
                             name: 'diastolic_blood_pressure',
                             type: 'line',
-                            stack: 'Total',
                             data: []
                         }
                     ]
