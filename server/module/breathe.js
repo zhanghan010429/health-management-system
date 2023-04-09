@@ -41,7 +41,6 @@ router.post('/setBreatheData', async (req, res) => {
         const result = await db(
             'select id from respiratory_rate where id="' + id + '"'
         )
-        console.log(result, 'result')
         if (result.length >= 1) {
             const update = await db(
                 `update respiratory_rate set Mon="${Mon}", Tue="${Tue}", Wed="${Wed}", Thur="${Thur}", Fri="${Fri}", Sat="${Sat}", Sun="${Sun}" where id=${id}`
@@ -94,7 +93,6 @@ router.post('/setBloodOxygenData', async (req, res) => {
         const result = await db(
             'select id from blood_oxygen where id="' + id + '"'
         )
-        console.log(result, 'result')
         if (result.length >= 1) {
             const update = await db(
                 `update blood_oxygen set Mon="${Mon}", Tue="${Tue}", Wed="${Wed}", Thur="${Thur}", Fri="${Fri}", Sat="${Sat}", Sun="${Sun}" where id=${id}`
@@ -147,7 +145,6 @@ router.post('/setVitalApacityData', async (req, res) => {
         const result = await db(
             'select id from vital_apacity where id="' + id + '"'
         )
-        console.log(result, 'result')
         if (result.length >= 1) {
             const update = await db(
                 `update vital_apacity set Mon="${Mon}", Tue="${Tue}", Wed="${Wed}", Thur="${Thur}", Fri="${Fri}", Sat="${Sat}", Sun="${Sun}" where id=${id}`

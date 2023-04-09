@@ -63,7 +63,6 @@ export default defineComponent({
             try {
                 getUserInfo(id)
                     .then(res => {
-                        console.log(res.data)
                         const { code, data, message } = res.data
                         if (code === 0) {
                             const { headpic, phone, name, gender, age } = data

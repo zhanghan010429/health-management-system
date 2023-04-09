@@ -25,6 +25,8 @@ app.use('/health/breathe', require(__dirname + '/module/breathe'))
 app.use('/health/exercise', require(__dirname + '/module/exercise'))
 app.use('/health/heart', require(__dirname + '/module/heart'))
 app.use('/health/nutrition', require(__dirname + '/module/nutrition'))
+app.use('/health/bodyMeasure', require(__dirname + '/module/body-measure'))
+app.use('/health/article', require(__dirname + '/module/article'))
 
 app.listen(8091, () => {
     console.log('express listen port 8091')

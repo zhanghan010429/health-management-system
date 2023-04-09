@@ -10,7 +10,7 @@
         <div class="title">{{ title }}</div>
         <van-form @submit="onSubmit">
             <van-cell-group inset>
-                <template v-for="(item, index) in week">
+                <template v-for="(item, index) in dataName">
                     <van-field
                         v-model="form[item]"
                         :name="item"
@@ -63,11 +63,18 @@ export default defineComponent({
         placeholder: {
             type: String,
             required: true
+        },
+        dataName: {
+            type: Array,
+            default: ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
+        },
+        name: {
+            type: String,
+            required: true
         }
     },
     data() {
         return {
-            week: ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
         }
     },
     mounted() {},
@@ -96,8 +103,7 @@ export default defineComponent({
             this.$emit('onClickCloseIcon');
         },
         onSubmit(values: any) {
-            console.log(this.type, 'this.type')
-            this.$emit('onSubmit', values, this.type);
+            this.$emit('onSubmit', values, this.type, this.name);
         }
     }
 });

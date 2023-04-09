@@ -13,7 +13,7 @@
             <van-button
                 type="primary"
                 class="introduce-btn"
-                @click="openIntroduce"
+                @click="openIntroduce($event, item.name)"
             >{{item.option.title.text}}介绍</van-button>
             <div
                 :ref="item.name" 
@@ -31,6 +31,12 @@
             @onClickCloseIcon="onClickCloseIcon"
             @onSubmit="onSubmit"
         ></add-data-popup>
+        <text-popup
+            :is-show="textPopupIsShow"
+            :title="textPopupTitle"
+            :text="text"
+            @onClickCloseIcon="closeText"
+        ></text-popup>
     </div>
 </template>
 
@@ -55,6 +61,7 @@ import Explain from '@/components/header-explain/index.vue';
 import FooterNav from '@/components/footer-nav/index.vue';
 import { Popup, Dialog,Button } from 'vant'
 import AddDataPopup from '../../components/data-popup/index.vue';
+import TextPopup from '../../components/text-popup/index.vue';
 import * as echarts from 'echarts';
 
 type State = {
@@ -69,7 +76,8 @@ export default defineComponent({
         [Dialog.name]: Dialog,
         [Button.name]:Button,
         [Popup.name]: Popup,
-        'add-data-popup': AddDataPopup
+        'add-data-popup': AddDataPopup,
+        'text-popup': TextPopup
     },
     data() {
         return {
@@ -180,7 +188,10 @@ export default defineComponent({
             popupType: '',
             breatheRateData: false,
             bloodOxygenData: false,
-            placeholder: ''
+            placeholder: '',
+            textPopupIsShow: false,
+            textPopupTitle: '',
+            text: ''
         }
     },
     mounted() {
@@ -200,8 +211,23 @@ export default defineComponent({
         };
     },
     methods: {
-        openIntroduce() {
-
+        openIntroduce(e:any, type:string) {
+            this.textPopupIsShow = true;
+            if (type === 'breatheRate') {
+                this.textPopupTitle = '呼吸频率介绍';
+                this.text = '呼吸频率为一种形容每分钟呼吸的次数的医学术语，胸部的一次起伏就是一次呼吸，即一次吸气一次呼气。每分钟呼吸的次数称为呼吸频率。呼吸是人体内外环境之间进行气体交换的必需过程，人体通过呼吸而吸进氧气、呼出二氧化碳，从而维持正常的生理功能。'
+            }
+            else if (type === 'bloodOxygen') {
+                this.textPopupTitle = '血氧介绍';
+                this.text = '血氧，是指血液中的氧气，人体正常血氧饱和度为95%以上。血液中含氧量越高，人的新陈代谢就越好。当然血氧含量高并不是一个好的现象，人体内的血氧都是有一定的饱和度，过低会造成机体供氧不足，过高会导致体内细胞老化。'
+            }
+            else if (type === 'vitalCapacity') {
+                this.textPopupTitle = '肺活量介绍';
+                this.text = '肺活量（vital capacity）是指在最大吸气后尽力呼气的气量。包括潮气量、补吸气量和补呼气量三部分。潮气量是指一次呼吸周期中肺吸入或呼出的气量，在潮气量之外再吸入的最大气量为补吸气量，在潮气量之外再呼出的最大气量为补呼气量，最大呼气后残留在肺内的气量为余气量。存在较大的个体差异。受年龄、性别、身材、呼吸肌强弱及肺和胸廓弹性等因素的影响。一般说，身体越强壮，它就越大。研究表明，它与最大吸氧量存在很高的相关。常用作评价人体素质的指标。'
+            }
+        },
+        closeText() {
+            this.textPopupIsShow = false;
         },
         addData(e:any, item: any) {
             if (item.name === 'breatheRate') {
@@ -285,6 +311,7 @@ export default defineComponent({
                 setBreatheData(uid, values)
                     .then(res => {
                         this.handleSetData(type, res)
+                        this.onClickCloseIcon()
                     })
                     .catch(error => {
                         Dialog.alert({
@@ -296,6 +323,7 @@ export default defineComponent({
                 setBloodOxygenData(uid, values)
                     .then(res => {
                         this.handleSetData(type, res)
+                        this.onClickCloseIcon()
                     })
                     .catch(error => {
                         Dialog.alert({
@@ -307,6 +335,7 @@ export default defineComponent({
                 setVitalApacityData(uid, values)
                     .then(res => {
                         this.handleSetData(type, res)
+                        this.onClickCloseIcon()
                     })
                     .catch(error => {
                         Dialog.alert({
@@ -316,9 +345,7 @@ export default defineComponent({
             }
         },
         handleGetData(type: string, res: any) {
-            console.log(type, 'tttt')
             const echartDom = this.$refs[type] as HTMLElement;
-            console.log(echartDom, 'echartDom')
             let myChart = echarts.init(echartDom);
             const { code, data } = res.data;
             if (code === 0) {

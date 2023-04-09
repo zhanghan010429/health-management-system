@@ -6,11 +6,6 @@
                 <a href="javascript:;" v-show="!isAccount" @click="back()"></a>{{ explainName }}
             </div>
         </div>
-        <!-- <van-button 
-            type="primary"
-            class="add-btn"
-            @click="addData"
-        >add data</van-button> -->
     </div>
 </template>
 

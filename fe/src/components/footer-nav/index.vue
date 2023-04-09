@@ -8,6 +8,10 @@
                     alt="Health Management" class="tag-ico" />
                 <div class="tag-name">Health Management</div>
             </router-link>
+            <router-link tag="a" :to="{ path: '/bbs' }" class="nav-tag">
+                <img src="./images/bbs.jpg" width="30" height="26" alt="bbs" class="tag-ico" />
+                <div class="tag-name">bbs</div>
+            </router-link>
             <router-link tag="a" :to="{ path: '/personal' }" class="nav-tag this-tag">
                 <img src="./images/mineblue.png" width="30" height="26" alt="MY" class="tag-ico" />
                 <div class="tag-name">MY</div>
@@ -20,6 +24,10 @@
                 <img src="https://search-operate.cdn.bcebos.com/4c9515d9cc5efe92244e9da9bfdcbfca.jpg" width="30" height="26"
                     alt="Health Management" class="tag-ico" />
                 <div class="tag-name">Health Management</div>
+            </router-link>
+            <router-link tag="a" :to="{ path: '/bbs' }" class="nav-tag">
+                <img src="./images/bbs.jpg" width="30" height="26" alt="bbs" class="tag-ico" />
+                <div class="tag-name">bbs</div>
             </router-link>
             <router-link tag="a" :to="{ path: '/personal' }" class="nav-tag">
                 <img src="./images/minegrey.png" width="30" height="26" alt="MY" class="tag-ico" />
