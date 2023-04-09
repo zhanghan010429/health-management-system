@@ -93,13 +93,15 @@ export default defineComponent({
                     name: 'heart',
                     option: {
                         title: {
-                            text: '基本情况'
+                            text: '基本情况',
+                            top: '0px'
                         },
                         tooltip: {
                             trigger: 'axis'
                         },
                         legend: {
-                            data: ['heart_rate', 'aerobic_fitness', 'sleep_duration']
+                            data: ['heart_rate', 'aerobic_fitness', 'sleep_duration'],
+                            top: '20px'
                         },
                         grid: {
                             left: '3%',
@@ -114,7 +116,9 @@ export default defineComponent({
                             magicType: { show: true, type: ['line', 'bar'] },
                             restore: { show: true },
                             saveAsImage: { show: true }
-                            }
+                            },
+                            orient: 'vertical',
+                            top: '100px'
                         },
                         xAxis: {
                             type: 'category',
@@ -150,13 +154,15 @@ export default defineComponent({
                     name: 'pressure',
                     option: {
                     title: {
-                        text: '血压情况'
+                        text: '血压情况',
+                        top: '0px'
                     },
                     tooltip: {
                         trigger: 'axis'
                     },
                     legend: {
-                        data: ['systolic_blood_pressure', 'diastolic_blood_pressure']
+                        data: ['systolic_blood_pressure', 'diastolic_blood_pressure'],
+                        top: '20px'
                     },
                     grid: {
                         left: '3%',
@@ -171,7 +177,9 @@ export default defineComponent({
                         magicType: { show: true, type: ['line', 'bar'] },
                         restore: { show: true },
                         saveAsImage: { show: true }
-                        }
+                        },
+                        orient: 'vertical',
+                        top: '100px'
                     },
                     xAxis: {
                         type: 'category',
