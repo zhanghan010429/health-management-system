@@ -2,8 +2,13 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { Toast, Dialog, Loading, RadioGroup, Radio, Form, Field, CellGroup } from 'vant'
 
+// 引入英文语言包
+
+import { Toast, Dialog, Loading, RadioGroup, Radio, Form, Field, CellGroup,Locale } from 'vant'
+import enUS from 'vant/es/locale/lang/en-US';
+import 'vant/lib/index.css';
+Locale.use('en-US', enUS);
 const app = createApp(App)
 
 app.use(router)

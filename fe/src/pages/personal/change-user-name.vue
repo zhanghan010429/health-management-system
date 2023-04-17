@@ -4,8 +4,8 @@
         <explain :explainName="state.explainName"></explain>
 
         <div class="white-item-wrpaer" style="border-bottom: 1px solid #efeded">
-            <label for="username">用户名：</label>
-            <input type="text" placeholder="请输入您的用户名" id="username" v-model="state.userName" v-on:blur="_changeUserName()"
+            <label for="username">username：</label>
+            <input type="text" placeholder="please enter username" id="username" v-model="state.userName" v-on:blur="_changeUserName()"
                 v-focus v-blur />
         </div>
     </div>
@@ -36,7 +36,7 @@ export default defineComponent({
     },
     setup(props, context: SetupContext) {
         const state = reactive({
-            explainName: '修改用户名',
+            explainName: 'update username',
             userName: ''
         })
 
@@ -50,10 +50,10 @@ export default defineComponent({
             const userId = query.userId !== undefined ? query.userId : 0
             const userName = state.userName || ''
             if (!userName.trim()) {
-                return Dialog.alert({ message: '请填写用户昵称' })
+                return Dialog.alert({ message: 'please enter username' })
             }
             if (!userId) {
-                return Dialog.alert({ message: '用户ID不合法' })
+                return Dialog.alert({ message: 'userId not available' })
             }
             changeUserName(userId, state.userName)
                 .then(res => {

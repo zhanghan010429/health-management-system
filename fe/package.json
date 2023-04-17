@@ -11,7 +11,11 @@
   "author": "zhanghan",
   "dependencies": {
     "core-js": "^3.6.5",
-    "echarts": "^5.4.2"
+    "echarts": "^5.4.2",
+    "vant": "^3.2.3"
+  },
+  "resolutions": {
+    "typescript": "~4.7"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-umd": "^7.2.0",
@@ -40,7 +44,6 @@
     "ts-import-plugin": "^1.6.7",
     "typescript": "^4.4.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "vant": "^3.2.3",
     "vue": "^3.2.16",
     "vue-router": "^4.0.11",
     "vuex": "^4.0.2",

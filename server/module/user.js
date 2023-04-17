@@ -42,9 +42,9 @@ router.post('/changeUserName', async (req, res) => {
             '"'
         )
         if (data) {
-            res.json({ code: 0, data: null, message: '修改成功' })
+            res.json({ code: 0, data: null, message: 'Modify Successfully' })
         } else {
-            res.json({ code: -1, data: null, message: '用户名修改失败，请重新操作' })
+            res.json({ code: -1, data: null, message: 'update username failed，please try again' })
         }
     } catch (e) {
         res.json({ code: -1, data: null, message: e })
@@ -63,7 +63,7 @@ router.post('/changeUserSex', async (req, res) => {
             'update basic_info set gender="' + sex + '" where id="' + userId + '"'
         )
         if (data) {
-            res.json({ code: 0, data: null, message: '修改成功' })
+            res.json({ code: 0, data: null, message: 'Modify Successfully' })
         } else {
             res.json({ code: -1, data: null, message: error })
         }

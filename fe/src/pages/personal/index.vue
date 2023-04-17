@@ -47,7 +47,7 @@ export default defineComponent({
     },
     setup(props: {}, context: {}) {
         const state: State = reactive<State>({
-            explainName: '个人中心',
+            explainName: 'My',
             navName: 'personal',
             userInfo: { phone: '', headpic: 'https://search-operate.cdn.bcebos.com/df98ac65f7f787e498d593ecfc1d75e1.jpeg' }
         })

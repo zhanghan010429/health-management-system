@@ -14,7 +14,7 @@ const db = require('../helper/db')
 router.post('/getBody', async (req, res) => {
     const msg = req.body
     const { id, tableName } = msg;
-
+    console.log(msg,'===================')
     try {
         const result = await db(
             `select Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sept, Oct, Nov, Dece from ${tableName} where id="${id}"`
@@ -22,7 +22,7 @@ router.post('/getBody', async (req, res) => {
         if (result.length >= 1) {
             res.json({ code: 0, data: result[0], message: '成功' })
         } else {
-            
+            res.json({ code: 0, data: [], message: '成功' })
         }
     } catch (err) {
         res.json({ code: -1, data: null, message: err })
@@ -74,7 +74,7 @@ router.post('/getTemperature', async (req, res) => {
         if (result.length >= 1) {
             res.json({ code: 0, data: result[0], message: '成功' })
         } else {
-            
+            res.json({ code: 0, data: [], message: '成功' })
         }
     } catch (err) {
         res.json({ code: -1, data: null, message: err })

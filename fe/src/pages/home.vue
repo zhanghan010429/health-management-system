@@ -49,31 +49,31 @@ export default defineComponent({
     setup(props: {}, context: SetupContext) {
         const store = useStore<StateProps>()
         const state: State = reactive({
-            explainName: '健康管理',
+            explainName: 'Health Management',
             classifyList: [
                 {
                     icon: '',
-                    name: '呼吸',
+                    name: 'Respiration',
                     path: '/breathe'
                 },
                 {
                     icon: '',
-                    name: '运动',
+                    name: 'Exercises',
                     path: '/exercise'
                 },
                 {
                     icon: '',
-                    name: '营养摄入',
+                    name: 'Nutrition Intake',
                     path: '/nutrition'
                 },
                 {
                     icon: '',
-                    name: '心脏',
+                    name: 'Heart',
                     path: '/heart'
                 },
                 {
                     icon: '',
-                    name: '身体测量',
+                    name: 'Body Measurement',
                     path: '/body-measure'
                 }
             ]

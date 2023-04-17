@@ -7,7 +7,7 @@ const router = createRouter({
 })
 
 router.afterEach((to, from) => {
-    document.title = '健康管理系统'
+    document.title = 'Health Management System'
 })
 
 export default router

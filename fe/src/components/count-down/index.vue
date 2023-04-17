@@ -25,7 +25,7 @@ export default defineComponent({
     },
     setup(props: Props, context: {}) {
         const state = reactive({
-            btnName: '获取验证码',
+            btnName: 'Get it',
             disable: false
         })
 
@@ -44,7 +44,7 @@ export default defineComponent({
                 state.btnName = 'Try again in'+ num + 'seconds'
                 if (num < 1) {
                     state.disable = false
-                    state.btnName = 'Get Vertification Code'
+                    state.btnName = 'Get it'
                     clearInterval(timer)
                 }
             }, 1000)

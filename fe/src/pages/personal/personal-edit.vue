@@ -25,7 +25,7 @@
                 query: { userId: state.userId, userName: state.userName }
             }" class="white-item-wrpaer item" style="margin: 10px auto 15px auto">
                 <div class="ico username">
-                    <span>用户名称</span>
+                    <span>Username</span>
                 </div>
                 <div class="content">
                     <span>{{ state.userName }}</span>
@@ -36,11 +36,11 @@
                 query: { userId: state.userId, userSex: state.userSex }
             }" class="white-item-wrpaer item">
                 <div class="ico sex">
-                    <span>性别</span>
+                    <span>Gender</span>
                 </div>
                 <div class="content">
-                    <span v-if="state.userSex == 1">男</span>
-                    <span v-else>女</span>
+                    <span v-if="state.userSex == 0">male</span>
+                    <span v-else>female</span>
                 </div>
                 <div class="line"></div>
             </router-link>
@@ -48,7 +48,7 @@
 
         <!-- 退出登录 -->
         <div class="white-item-wrpaer">
-            <a href="javascript:;" class="login-out" @click="logOut">退出登录</a>
+            <a href="javascript:;" class="login-out" @click="logOut">Log out</a>
         </div>
     </div>
 </template>
@@ -70,7 +70,7 @@ export default defineComponent({
         const router = useRouter()
         const userSex: Sex = 1
         const state = reactive({
-            explainName: '个人资料修改',
+            explainName: 'Update Personal Information',
             headpic: '',
             userId: 0,
             userName: '',
@@ -87,10 +87,10 @@ export default defineComponent({
                     .then(res => {
                         const { code, data, message } = res.data
                         if (code === 0) {
-                            const { user_name, user_sex, user_headpic } = data
-                            state.userName = user_name
-                            state.userSex = user_sex
-                            state.headpic = user_headpic
+                            const { name, gender, } = data
+                            state.userName = name
+                            state.userSex = gender
+                            // state.headpic = user_headpic
                         } else {
                             Dialog.alert({ message })
                         }

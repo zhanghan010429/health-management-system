@@ -5,7 +5,7 @@
                 type="primary"
                 class="add-btn"
                 @click="addData()"
-        >分享健康</van-button>
+        >Share Health</van-button>
         <div 
             class="list-wrap" 
             v-for="(item, index) in artList"
@@ -13,6 +13,7 @@
             <card-article 
                 :isShowEdit="handleIsShowEdit(item.uid)"
                 :article="item"
+                :index="index"
                 @edit="edit"
             ></card-article>
         </div>
@@ -32,16 +33,16 @@
                         class="textarea"
                         rows="15"
                         autosize
-                        label="分享内容"
+                        label="Let's share!"
                         type="textarea"
                         maxlength="150"
-                        placeholder="请输入分享内容"
+                        placeholder="Please enter your share content."
                         show-word-limit
                     />
                 </van-cell-group>
                 <div style="margin: 16px;">
                     <van-button round block type="primary" native-type="submit">
-                        提交
+                        submit
                     </van-button>
                 </div>
             </van-form>
@@ -103,8 +104,8 @@ export default defineComponent({
 
     setup(props: {}, context: SetupContext) {
         const state: State = reactive({
-            explainName: '健康论坛',
-            title: '添加呼吸数据',
+            explainName: 'Health Forum',
+            title: 'Add respiratory data',
             showDialog: false
         });
         return {
@@ -154,6 +155,7 @@ export default defineComponent({
         },
         edit(id: any) {
             getArticleById(id).then(res => {
+                    console.log(res)
                     this.content = res.data.data as any;
                     this.isShow = true;
                     this.artId = id;

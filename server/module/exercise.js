@@ -22,7 +22,7 @@ router.post('/getExerciseStep', async (req, res) => {
         if (result.length >= 1) {
             res.json({ code: 0, data: result[0], message: '成功' })
         } else {
-            
+            res.json({ code: 0, data: [], message: '成功' })
         }
     } catch (err) {
         res.json({ code: -1, data: null, message: err })
@@ -75,7 +75,7 @@ router.post('/getCalorie', async (req, res) => {
         if (result.length >= 1) {
             res.json({ code: 0, data: result[0], message: '成功' })
         } else {
-            
+            res.json({ code: 0, data: [], message: '成功' })
         }
     } catch (err) {
         res.json({ code: -1, data: null, message: err })
@@ -98,7 +98,7 @@ router.post('/setCalorie', async (req, res) => {
                 `update burn_calories set Mon="${Mon}", Tue="${Tue}", Wed="${Wed}", Thur="${Thur}", Fri="${Fri}", Sat="${Sat}", Sun="${Sun}" where id=${id}`
             )
             if (update) {
-                res.json({ code: 1, data: null, message: '修改成功' })
+                res.json({ code: 1, data: null, message: 'Modify Successfully!' })
             }
         } else {
             const inserted = db(

@@ -4,11 +4,11 @@
         <explain :explainName="state.explainName"></explain>
 
         <div class="white-item-wrpaer" style="border-bottom: 1px solid #efeded">
-            <label for="man" :class="{ 'this-sex': state.sex == 1 }">男</label>
+            <label for="man" :class="{ 'this-sex': state.sex == 0 }">male</label>
             <input type="radio" name="sex" value="1" id="man" checked v-model="state.sex" @click="_changeSex" />
         </div>
         <div class="white-item-wrpaer">
-            <label for="woman" :class="{ 'this-sex': state.sex == 0 }">女</label>
+            <label for="woman" :class="{ 'this-sex': state.sex == 1 }">female</label>
             <input type="radio" name="sex" value="0" id="woman" v-model="state.sex" @click="_changeSex" />
         </div>
     </div>
@@ -32,7 +32,7 @@ export default defineComponent({
     },
     setup(props, context: SetupContext) {
         const state = reactive({
-            explainName: '修改性别',
+            explainName: 'change your gender',
             userId: 0,
             sex: 1
         })

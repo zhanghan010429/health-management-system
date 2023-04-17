@@ -8,7 +8,7 @@
         :style="{ height: '80%' }"
     >
         <div class="title">{{ title }}</div>
-        <p>{{ text }}</p>
+        <p class="introduction-text">{{ text }}</p>
     </van-popup>
 </template>
 
@@ -66,5 +66,12 @@ export default defineComponent({
     font-size: 20px;
     padding: 20px;
 
+}
+.introduction-text{
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 0;
+    line-height: 26px;
 }
 </style>

@@ -14,7 +14,7 @@
                 </p>
                 <p>
                     <span class="code-ico"></span>
-                    <input type="text" placeholder="Please enter the verification code." maxlength="6" class="code" v-model="state.code" v-focus
+                    <input type="text" placeholder="Please enter verification code." maxlength="6" class="code" v-model="state.code" v-focus
                         v-blur />
                     <count-down :phone="state.phone"></count-down>
                 </p>

@@ -1,24 +1,24 @@
 <template>
-    <!-- 重置密码 -->
+    <!-- Reset password -->
     <div class="forgetpwd-wraper">
         <explain :explainName="state.explainName"></explain>
 
-        <div class="find-pwd-process">
-            <img src="./images/flow2.png" width="100%" height="100%" alt="找回密码第二步" />
+        <div class="find-pwd-process">            <img src="./images/flow2.png" width="100%" height="100%" alt="The second step of retrieving the password" />
+
         </div>
         <div class="account-container">
             <form class="account-container-form" v-on:submit="complete">
                 <p>
                     <span class="pwd-ico"></span>
-                    <input type="password" placeholder="请输入密码" class="pwd" v-model.lazy.trim="state.pwd" v-focus v-blur />
+                    <input type="password" placeholder="Please enter new password." class="pwd" v-model.lazy.trim="state.pwd" v-focus v-blur />
                 </p>
                 <p>
                     <span class="pwd-ico"></span>
-                    <input type="password" placeholder="请确认密码" class="pwd" v-model.lazy.trim="state.confirmPwd" v-focus
+                    <input type="password" placeholder="Please confirm the password." class="pwd" v-model.lazy.trim="state.confirmPwd" v-focus
                         v-blur />
                 </p>
                 <p>
-                    <input type="submit" value="完	成" class="account-btn" />
+                    <input type="submit" value="Finish" class="account-btn" />
                 </p>
             </form>
         </div>
@@ -31,7 +31,6 @@ import { useRouter, useRoute } from 'vue-router'
 import Explain from '@/components/header-explain/index.vue'
 
 import { focus, blur } from '@/mixins/directive'
-
 import { validatePhone, validatePassword } from '@/utils/index'
 import { resetPassword } from '@/api/auth'
 import { Dialog } from 'vant'
@@ -48,7 +47,7 @@ export default defineComponent({
         const router = useRouter()
         const route = useRoute()
         const state = reactive({
-            explainName: '找回密码第二步',
+            explainName: 'The second step of retrieving the password',
             phone: '',
             pwd: '',
             confirmPwd: ''
@@ -62,13 +61,13 @@ export default defineComponent({
         function complete() {
             if (!validatePassword(state.pwd)) {
                 return Dialog.alert({
-                    message: '密码至少6位数'
+                    message: 'Please enter a password of at least 6 digits.'
                 })
             }
 
             if (state.pwd !== state.confirmPwd) {
                 return Dialog.alert({
-                    message: '两次输入的密码不一致，请重新输入！'
+                    message: 'The two entered passwords are inconsistent. Please enter it again!'
                 })
             }
 
@@ -77,7 +76,7 @@ export default defineComponent({
                     const { code, data, message } = res.data
                     if (code === 0) {
                         Dialog.alert({
-                            message: '密码修改成功'
+                            message: 'Password changed successfully.'
                         })
                         router.replace({ name: 'Login' })
                     } else {

@@ -83,19 +83,19 @@ export default defineComponent({
         function submitRegist() {
             if (!validatePhone(state.phone)) {
                 return Dialog.alert({
-                    message: '手机号码格式不正确，请重新输入！'
+                    message: 'Mobile phone number format is incorrect. Please enter it again!'
                 })
             }
 
             if (!validatePassword(state.pwd)) {
                 return Dialog.alert({
-                    message: '密码需要至少6位数，请重新输入！'
+                    message: 'Password needs at least 6 digits. Please enter it again!'
                 })
             }
 
             if (state.pwd !== state.confirmPwd) {
                 return Dialog.alert({
-                    message: '两次输入的密码不一致，请重新输入！'
+                    message: 'The two entered passwords are inconsistent. Please enter it again!'
                 })
             }
 
@@ -103,7 +103,7 @@ export default defineComponent({
                 .then(res => {
                     const { code, message } = res.data
                     if (code === 0) {
-                        Dialog.alert({ message: '注册成功，快去登陆吧～' })
+                        Dialog.alert({ message: 'Register successfully. Go to login ~' })
                         setTimeout(() => {
                             router.replace({
                                 path: '/account/login'
