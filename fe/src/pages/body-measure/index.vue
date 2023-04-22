@@ -1,8 +1,8 @@
 <template>
   <div class="global-coupon-list-wraper">
     <explain :explainName="state.explainName"></explain>
-    <div v-for="(item, index) in echartsList" :key="index">
-      <div v-for="(series, index) in item.option.series">
+    <div v-for="(item, index) in echartsList" :key="index" class="wrap">
+      <div v-for="(series, index) in item.option.series" >
         <van-button
           type="primary"
           class="add-btn"
@@ -23,12 +23,17 @@
       </div>
       <div :ref="item.name" :type="item.name" :id="item.name" class="echart"></div>
       <div
+        v-if="item.option.series[0].data.length"
         class="showtables"
         @click="showTableData(item)"
         :class="{ second: index == 1 }"
       >
         <img src="../../static/images/orders.png" alt="" />
       </div>
+      <div 
+        v-if="item.option.series[0].data.length === 0"
+        class="empty"
+      >There is no data.</div>
     </div>
     <footer-nav></footer-nav>
 
@@ -164,7 +169,10 @@ export default defineComponent({
               ]
             },
             yAxis: {
-              type: 'value'
+              type: 'value',
+              min:function(value){
+                return value.min
+              },
             },
             series: [
               {
@@ -514,6 +522,19 @@ export default defineComponent({
   top: 1228px !important;
 }
 .parent-div {
+  position: relative;
+}
+.empty {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  font-size: 30px;
+  width: 100%;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.4);
+}
+.wrap {
   position: relative;
 }
 </style>

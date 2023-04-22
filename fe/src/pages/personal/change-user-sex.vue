@@ -4,11 +4,11 @@
         <explain :explainName="state.explainName"></explain>
 
         <div class="white-item-wrpaer" style="border-bottom: 1px solid #efeded">
-            <label for="man" :class="{ 'this-sex': state.sex == 0 }">male</label>
+            <label for="man" :class="{ 'this-sex': state.sex == 1 }">male</label>
             <input type="radio" name="sex" value="1" id="man" checked v-model="state.sex" @click="_changeSex" />
         </div>
         <div class="white-item-wrpaer">
-            <label for="woman" :class="{ 'this-sex': state.sex == 1 }">female</label>
+            <label for="woman" :class="{ 'this-sex': state.sex == 0 }">female</label>
             <input type="radio" name="sex" value="0" id="woman" v-model="state.sex" @click="_changeSex" />
         </div>
     </div>
@@ -43,6 +43,7 @@ export default defineComponent({
         state.sex = query.userSex !== undefined ? query.userSex - 0 : 1
 
         function _changeSex(e: any) {
+            console.log(e.target.value)
             state.sex = e.target.value - 0
             nextTick(() => {
                 const userId = state.userId || 0

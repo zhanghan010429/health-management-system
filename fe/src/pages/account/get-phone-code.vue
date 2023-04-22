@@ -2,9 +2,9 @@
     <div>
         <explain :explainName="state.explainName"></explain>
 
-        <div class="find-pwd-process">
+        <!-- <div class="find-pwd-process">
             <img src="./images/flow1.png" width="100%" height="100%" alt="The first step of retrieving the password." />
-        </div>
+        </div> -->
         <div class="account-container">
             <form class="account-container-form" v-on:submit.prevent="next">
                 <p>

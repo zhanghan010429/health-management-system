@@ -1,5 +1,5 @@
 /**
- * 用户相关
+ * related user
  * @author: zhanghan
  * @since:  2023/3/10
  */
@@ -9,7 +9,7 @@ const router = express.Router()
 const db = require('../helper/db')
 
 /**
- * 获取用户基本信息
+ * get the basic information of user
  */
 
 router.get('/info', async (req, res) => {
@@ -19,7 +19,7 @@ router.get('/info', async (req, res) => {
         if (data) {
             res.json({ code: 0, data, message: '' })
         } else {
-            res.json({ code: -1, data: null, message: '用户不存在' })
+            res.json({ code: -1, data: null, message: 'The user does not exist.‘            ' })
         }
     } catch (e) {
         res.json({ code: -1, data: null, message: e })
@@ -27,7 +27,7 @@ router.get('/info', async (req, res) => {
 })
 
 /*
- * 修改用户名
+ * modify the user name
  */
 router.post('/changeUserName', async (req, res) => {
     try {
@@ -42,9 +42,9 @@ router.post('/changeUserName', async (req, res) => {
             '"'
         )
         if (data) {
-            res.json({ code: 0, data: null, message: 'Modify Successfully' })
+            res.json({ code: 0, data: null, message: 'Modify Successfully!' })
         } else {
-            res.json({ code: -1, data: null, message: 'update username failed，please try again' })
+            res.json({ code: -1, data: null, message: 'Update username failed. Please try again' })
         }
     } catch (e) {
         res.json({ code: -1, data: null, message: e })
@@ -63,7 +63,7 @@ router.post('/changeUserSex', async (req, res) => {
             'update basic_info set gender="' + sex + '" where id="' + userId + '"'
         )
         if (data) {
-            res.json({ code: 0, data: null, message: 'Modify Successfully' })
+            res.json({ code: 0, data: null, message: 'Modify successfully!' })
         } else {
             res.json({ code: -1, data: null, message: error })
         }

@@ -28,10 +28,10 @@ router.post('/loginForm', async (req, res) => {
         )
         const [item] = result
         if (!item)
-            res.json({ code: -1, data: null, message: '用户不存在或密码错误' })
+            res.json({ code: -1, data: null, message: 'The user does not exist or the password is incorrect' })
         else res.json({ code: 0, data: item.id, message: '' })
     } catch (err) {
-        res.json({ code: -1, data: null, message: '登录失败，请重新操作' })
+        res.json({ code: -1, data: null, message: 'Login failed. Please try again.' })
     }
 })
 

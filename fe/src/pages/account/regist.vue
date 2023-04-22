@@ -68,8 +68,8 @@ export default defineComponent({
             confirmPwd: ''
         })
         const columns = [
-            { text: 'male', value: '0' },
-            { text: 'female', value: '1' }
+            { text: 'male', value: '1' },
+            { text: 'female', value: '0clear' }
         ];
         let showPicker = ref(false);
         const fieldValue = ref('');
@@ -83,7 +83,7 @@ export default defineComponent({
         function submitRegist() {
             if (!validatePhone(state.phone)) {
                 return Dialog.alert({
-                    message: 'Mobile phone number format is incorrect. Please enter it again!'
+                    message: 'Mobile phone number needs to be 11 digits. Please enter it again!'
                 })
             }
 

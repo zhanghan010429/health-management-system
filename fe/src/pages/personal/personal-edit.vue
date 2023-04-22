@@ -39,7 +39,7 @@
                     <span>Gender</span>
                 </div>
                 <div class="content">
-                    <span v-if="state.userSex == 0">male</span>
+                    <span v-if="state.userSex == 1">male</span>
                     <span v-else>female</span>
                 </div>
                 <div class="line"></div>

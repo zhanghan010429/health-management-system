@@ -36,7 +36,7 @@ export default defineComponent({
     },
     setup(props, context: SetupContext) {
         const state = reactive({
-            explainName: 'update username',
+            explainName: 'Update Username',
             userName: ''
         })
 

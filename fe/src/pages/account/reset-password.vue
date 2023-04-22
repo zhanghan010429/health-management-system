@@ -3,9 +3,9 @@
     <div class="forgetpwd-wraper">
         <explain :explainName="state.explainName"></explain>
 
-        <div class="find-pwd-process">            <img src="./images/flow2.png" width="100%" height="100%" alt="The second step of retrieving the password" />
-
-        </div>
+        <!-- <div class="find-pwd-process">            
+            <img src="./images/flow2.png" width="100%" height="100%" alt="The second step of retrieving the password" />
+        </div> -->
         <div class="account-container">
             <form class="account-container-form" v-on:submit="complete">
                 <p>
